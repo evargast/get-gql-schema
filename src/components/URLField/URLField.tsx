@@ -19,6 +19,7 @@ const URLField: FC<URLFieldProps> = ({ setURL }) => {
                 borderRadius="medium"
                 paddingX="size-250"
                 width="size-6000"
+                marginBottom="size-150"
             >
                 <Flex
                     justifyContent="space-between"

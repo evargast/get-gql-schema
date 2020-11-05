@@ -4,12 +4,15 @@ import KeyValue from "components/KeyValue";
 import React, { FC, useEffect, useState } from "react";
 
 type Actions = "UPDATE" | "DELETE";
-const InputForm: FC = () => {
+
+interface InputFormProps {
+    headersInfo: JSONObject;
+    setHeadersInfo: StateSetter<JSONObject>;
+}
+
+const InputForm: FC<InputFormProps> = ({ headersInfo, setHeadersInfo }) => {
     const [index, setIndex] = useState(0);
     const [headers, setHeaders] = useState<DynamicElements>({});
-    const [headersInfo, setHeadersInfo] = useState<JSONObject>(
-        {} as JSONObject,
-    );
 
     const updateJSON = (newEntry: JSONObject, action = "UPDATE" as Actions) => {
         if (action === "UPDATE") {
@@ -34,6 +37,7 @@ const InputForm: FC = () => {
                 padding="size-250"
                 paddingTop="size-0"
                 width="size-6000"
+                marginBottom="size-150"
             >
                 <div>
                     <h2>Headers [optional]</h2>
