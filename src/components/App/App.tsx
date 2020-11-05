@@ -1,57 +1,25 @@
 import {
-    Grid,
-    lightTheme,
+    defaultTheme,
     Provider as ProviderV3,
-    repeat,
     View,
 } from "@adobe/react-spectrum";
-import React, { ComponentProps, FC } from "react";
+import InputForm from "components/InputForm";
+import URLField from "components/URLField";
+import React, { FC, useState } from "react";
 
 import "./App.css";
 
 const App: FC = () => {
-    const baseColors = [
-        "celery",
-        "chartreuse",
-        "yellow",
-        "magenta",
-        "fuchsia",
-        "purple",
-        "indigo",
-        "seafoam",
-        "red",
-        "orange",
-        "green",
-        "blue",
-    ];
-
-    type BackgroundColor = ComponentProps<typeof View>["backgroundColor"];
-    const colors: BackgroundColor[] = [];
-    for (const color of baseColors) {
-        for (let i = 4; i <= 7; i++) {
-            colors.push(`${color}-${i}00` as BackgroundColor);
-        }
-    }
+    const [url, setURL] = useState<string>("");
 
     return (
-        <ProviderV3 theme={lightTheme} colorScheme={"light"}>
+        <ProviderV3 theme={defaultTheme} colorScheme={"light"} height="100vh">
             <View paddingTop="size-400">
-                <h1 className="App">Welcome to React Spectrum!</h1>
+                <h1 className="App">Get your GQL Schema!</h1>
             </View>
 
-            <Grid
-                columns={repeat("auto-fit", "size-800")}
-                autoRows="size-800"
-                justifyContent="center"
-                gap="size-100"
-                marginX="size-200"
-                marginTop="size-300"
-                marginBottom="size-400"
-            >
-                {colors.map(color => (
-                    <View key={color} backgroundColor={color} />
-                ))}
-            </Grid>
+            <InputForm />
+            <URLField setURL={setURL} />
         </ProviderV3>
     );
 };
