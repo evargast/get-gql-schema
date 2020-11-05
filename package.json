@@ -1,5 +1,5 @@
 {
-    "name": "webpack-react-spectrum",
+    "name": "get-gql-schema",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -20,15 +20,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/evargast/webpack-react-spectrum.git"
+        "url": "git+https://github.com/evargast/get-gql-schema.git"
     },
     "keywords": [],
     "author": "",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/evargast/webpack-react-spectrum/issues"
+        "url": "https://github.com/evargast/get-gql-schema/issues"
     },
-    "homepage": "https://github.com/evargast/webpack-react-spectrum#readme",
+    "homepage": "https://github.com/evargast/get-gql-schema#readme",
     "devDependencies": {
         "@mdx-js/loader": "^1.6.19",
         "@storybook/addon-actions": "^6.0.26",
