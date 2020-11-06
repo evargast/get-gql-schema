@@ -18,7 +18,7 @@ const URLField: FC<URLFieldProps> = ({ setURL }) => {
                 borderColor="dark"
                 borderRadius="medium"
                 paddingX="size-250"
-                width="size-6000"
+                width="100%"
                 marginBottom="size-150"
             >
                 <Flex

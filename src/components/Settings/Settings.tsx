@@ -23,7 +23,7 @@ const Settings: FC<SettingsProps> = ({
                 borderRadius="medium"
                 padding="size-250"
                 paddingTop="size-0"
-                width="size-6000"
+                width="100%"
                 marginBottom="size-150"
             >
                 <h2>Settings</h2>

@@ -57,8 +57,8 @@ const InputForm: FC<InputFormProps> = ({ headersInfo, setHeadersInfo }) => {
                 borderColor="dark"
                 borderRadius="medium"
                 padding="size-250"
+                width="100%"
                 paddingTop="size-0"
-                width="size-6000"
                 marginBottom="size-150"
             >
                 <h2>Headers [optional]</h2>
@@ -84,8 +84,7 @@ const InputForm: FC<InputFormProps> = ({ headersInfo, setHeadersInfo }) => {
                         <TextArea
                             validationState={isBulkValid}
                             label="Headers (JSON)"
-                            width="size-5000"
-                            minHeight="size-500"
+                            width="size-6000"
                             value={bulkText}
                             onChange={setBulkText}
                             onBlur={onBulkBlur}

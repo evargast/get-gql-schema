@@ -1,5 +1,6 @@
 import {
     defaultTheme,
+    Flex,
     Provider as ProviderV3,
     View,
 } from "@adobe/react-spectrum";
@@ -48,18 +49,25 @@ const App: FC = () => {
                 <View paddingTop="size-400">
                     <h1 className="App">Get your GQL Schema!</h1>
                 </View>
-                <InputForm
-                    headersInfo={headersInfo}
-                    setHeadersInfo={setHeadersInfo}
-                />
-                <URLField setURL={setURL} />
-                <Settings
-                    hideEnums={hideEnums}
-                    hideTypes={hideTypes}
-                    setHideEnums={setHideEnums}
-                    setHideTypes={setHideTypes}
-                />
-                <Response data={data} loading={loading} error={error} />
+                <Flex
+                    direction="column"
+                    gap="size-200"
+                    marginX="auto"
+                    width="size-6000"
+                >
+                    <InputForm
+                        headersInfo={headersInfo}
+                        setHeadersInfo={setHeadersInfo}
+                    />
+                    <URLField setURL={setURL} />
+                    <Settings
+                        hideEnums={hideEnums}
+                        hideTypes={hideTypes}
+                        setHideEnums={setHideEnums}
+                        setHideTypes={setHideTypes}
+                    />
+                    <Response data={data} loading={loading} error={error} />
+                </Flex>
             </View>
         </ProviderV3>
     );

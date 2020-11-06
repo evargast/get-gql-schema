@@ -51,7 +51,7 @@ const Response: FC<ResponseProps> = ({ loading, error, data }) => {
                     borderRadius="medium"
                     padding="size-250"
                     paddingTop="size-0"
-                    width="size-6000"
+                    width="100%"
                 >
                     <h2>Response</h2>
                     <Picker
