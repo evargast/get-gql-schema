@@ -12,7 +12,7 @@
         "module": "ESNext",
         "moduleResolution": "Node",
         "noEmit": false,
-        "outDir": "./dist/",
+        "outDir": "./build/",
         "resolveJsonModule": true,
         "rootDirs": ["src", "src/components/"],
         "skipLibCheck": true,

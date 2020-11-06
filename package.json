@@ -12,6 +12,8 @@
         "format": "prettier --check \"./**/*.{ts,tsx,js,css,json,md}\"",
         "format:fix": "prettier --write  \"./**/*.{ts,tsx,js,css,json,md}\"",
         "test": "jest --color --watch",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook --output-dir storybook",
         "deploy-storybook": "storybook-to-ghpages --ci --out=storybook",
@@ -28,7 +30,7 @@
     "bugs": {
         "url": "https://github.com/evargast/get-gql-schema/issues"
     },
-    "homepage": "https://github.com/evargast/get-gql-schema#readme",
+    "homepage": "https://evargast.github.io/get-gql-schema",
     "devDependencies": {
         "@mdx-js/loader": "^1.6.19",
         "@spectrum-icons/illustrations": "^3.2.0",
@@ -68,6 +70,7 @@
         "eslint-plugin-react": "^7.21.5",
         "eslint-plugin-react-hooks": "^4.2.0",
         "eslint-plugin-simple-import-sort": "^5.0.3",
+        "gh-pages": "^3.1.0",
         "gql-string-to-object": "^1.2.0",
         "html-webpack-plugin": "^4.5.0",
         "husky": "^4.3.0",
