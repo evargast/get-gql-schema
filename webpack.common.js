@@ -65,7 +65,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Spectrum App",
+            title: "Get GraphQL Schema",
             template: __dirname + "/public/index.html",
             inject: "body",
             filename: "index.html",
@@ -73,6 +73,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css",
+        }),
+        new HtmlWebpackPlugin({
+            template: __dirname + "/public/index.html",
+            favicon: "./src/assets/images/favico-36x36.png",
         }),
     ],
     devServer: {
