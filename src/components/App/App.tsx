@@ -4,6 +4,7 @@ import {
     Provider as ProviderV3,
     View,
 } from "@adobe/react-spectrum";
+import ColorsBanner from "components/ColorsBanner";
 import InputForm from "components/InputForm";
 import Response from "components/Response";
 import Settings from "components/Settings";
@@ -46,15 +47,17 @@ const App: FC = () => {
     return (
         <ProviderV3 theme={defaultTheme} colorScheme={"light"}>
             <View height="100%">
-                <View paddingTop="size-400">
-                    <h1 className="App">Get your GQL Schema!</h1>
-                </View>
                 <Flex
                     direction="column"
                     gap="size-200"
                     marginX="auto"
                     width="size-6000"
                 >
+                    <View paddingTop="size-400">
+                        <ColorsBanner />
+                        <h1 className="App">Get your GQL Schema!</h1>
+                        <ColorsBanner />
+                    </View>
                     <InputForm
                         headersInfo={headersInfo}
                         setHeadersInfo={setHeadersInfo}
