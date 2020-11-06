@@ -1,6 +1,14 @@
-import { ActionButton, Flex, Text, View } from "@adobe/react-spectrum";
+import {
+    ActionButton,
+    Flex,
+    Text,
+    TextArea,
+    View,
+} from "@adobe/react-spectrum";
 import AddCircle from "@spectrum-icons/workflow/AddCircle";
 import KeyValue from "components/KeyValue";
+import Toggle from "components/Toggle";
+import isJSON from "components/utils/isJSON";
 import React, { FC, useEffect, useState } from "react";
 
 type Actions = "UPDATE" | "DELETE";
@@ -11,8 +19,11 @@ interface InputFormProps {
 }
 
 const InputForm: FC<InputFormProps> = ({ headersInfo, setHeadersInfo }) => {
-    const [index, setIndex] = useState(0);
+    const [index, setIndex] = useState<number>(0);
+    const [bulk, setBulk] = useState<boolean>(false);
+    const [bulkText, setBulkText] = useState<string>("");
     const [headers, setHeaders] = useState<DynamicElements>({});
+    const [isBulkValid, setIsBulkValid] = useState<"valid" | "invalid">();
 
     const updateJSON = (newEntry: JSONObject, action = "UPDATE" as Actions) => {
         if (action === "UPDATE") {
@@ -20,6 +31,17 @@ const InputForm: FC<InputFormProps> = ({ headersInfo, setHeadersInfo }) => {
         }
     };
 
+    const onBulkBlur = () => {
+        if (bulkText === "") {
+            setIsBulkValid(undefined);
+        }
+        if (isJSON(bulkText)) {
+            setIsBulkValid("valid");
+            setHeadersInfo(JSON.parse(bulkText));
+        } else {
+            setIsBulkValid("invalid");
+        }
+    };
     useEffect(() => {
         if (index >= 1) {
             const tempHeader: DynamicElements = {};
@@ -39,22 +61,45 @@ const InputForm: FC<InputFormProps> = ({ headersInfo, setHeadersInfo }) => {
                 width="size-6000"
                 marginBottom="size-150"
             >
-                <div>
-                    <h2>Headers [optional]</h2>
-                    {Object.keys(headers).map(
-                        headerIndex => headers[parseInt(headerIndex)],
-                    )}
-                </div>
+                <h2>Headers [optional]</h2>
+                {!bulk && (
+                    <>
+                        {Object.keys(headers).map(
+                            headerIndex => headers[parseInt(headerIndex)],
+                        )}
 
-                <Flex justifyContent="center">
-                    <ActionButton
-                        marginTop="size-200"
-                        onPress={() => setIndex(index + 1)}
-                    >
-                        <AddCircle />
-                        <Text>Add headers</Text>
-                    </ActionButton>
-                </Flex>
+                        <Flex justifyContent="center" marginBottom="size-200">
+                            <ActionButton
+                                marginTop="size-200"
+                                onPress={() => setIndex(index + 1)}
+                            >
+                                <AddCircle />
+                                <Text>Add headers</Text>
+                            </ActionButton>
+                        </Flex>
+                    </>
+                )}
+                {bulk && (
+                    <Flex justifyContent="center" marginBottom="size-200">
+                        <TextArea
+                            validationState={isBulkValid}
+                            label="Headers (JSON)"
+                            width="size-5000"
+                            minHeight="size-500"
+                            value={bulkText}
+                            onChange={setBulkText}
+                            onBlur={onBulkBlur}
+                        />
+                    </Flex>
+                )}
+                <Toggle
+                    labels={{
+                        on: "Bulk Headers (JSON)",
+                        off: "Individual Headers",
+                    }}
+                    defaultValue={bulk}
+                    setSelected={setBulk}
+                />
             </View>
         </Flex>
     );
